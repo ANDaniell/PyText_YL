@@ -80,11 +80,14 @@ class MemoryWorker():
         pass
 
     def showDialog(self):
-        text, ok = QInputDialog.getText(self, 'Color dialog',
+        try:
+            text, ok = QInputDialog.getText(self, 'Color dialog',
                                         'Enter the part of speech:')
-        if ok:
-            color = self.change_color_settings()
-            set_color(text, color)
+            if ok:
+                color = self.change_color_settings()
+                set_color(text, color)
+        except Exception:
+            pass
 
     def txt_treads(self):
         e1 = threading.Event()
@@ -146,7 +149,7 @@ class Graphic:
         colorAction = QAction(QIcon('colors.png'), '&Colors', self)
         colorAction.setShortcut('Ctrl+L')
         colorAction.setStatusTip('Configure your setup, dude!')
-        colorAction.triggered.connect(self.change_color_settings)
+        colorAction.triggered.connect(self.showDialog)
 
         self.statusBar()
 
