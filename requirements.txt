@@ -1,0 +1,4 @@
+logging~=0.4.9.6
+PyQt5~=5.15.1
+pymorphy2~=0.9.1
+chardet~=3.0.4
